@@ -2,8 +2,6 @@
 	<input #inputCity type="text" >
 	<button (click)="requestWeatherFor(inputCity.value)">Search</button>
 	<div>
-		<ul>
-			<li *ngFor="let r of searchResult">{{r}}</li>
-		</ul>
+		{{searchResult | json}}
 	</div>
 </div>

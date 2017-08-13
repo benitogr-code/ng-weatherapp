@@ -9,7 +9,7 @@ import { OpenWeatherService } from './open-weather.service'
 
 export class WeatherSearchComponent {
 
-	public  searchResult: string[] = [];
+	public  searchResult: any = {};
 	
 	constructor(private openWeatherService: OpenWeatherService) {}
 
