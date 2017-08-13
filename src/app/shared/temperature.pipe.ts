@@ -15,7 +15,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TemperaturePipe implements PipeTransform {
 
 	transform(value: number, unit: string): string {
-		console.log("Temperature Pipe: " + unit);
+		//console.log("Temperature Pipe: " + unit);
 		if (unit && (unit === "cel")) {
 			let newValue = value - 273.15;
 			return `${newValue.toFixed(2)} ºC`;
