@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { OpenWeatherService } from './open-weather.service'
+
+import { OpenWeatherService } from './open-weather.service';
+import { CityWeather } from './city-weather';
 
 @Component({
 	selector: 'weather-search',
@@ -9,7 +11,7 @@ import { OpenWeatherService } from './open-weather.service'
 
 export class WeatherSearchComponent {
 
-	public  searchResult: any = {};
+	public searchResult: Array<CityWeather> = [];
 	
 	constructor(private openWeatherService: OpenWeatherService) {}
 

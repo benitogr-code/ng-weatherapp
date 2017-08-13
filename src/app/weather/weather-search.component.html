@@ -2,6 +2,17 @@
 	<input #inputCity type="text" >
 	<button (click)="requestWeatherFor(inputCity.value)">Search</button>
 	<div>
-		{{searchResult | json}}
+		<table>
+			<tr *ngFor="let city of searchResult">
+				<td>
+					<img [src]="city.getWeatherIconUrl()">
+				</td>
+				<td>
+					<a [href]="city.getCityUrl()" target="_blank">{{city.name}}, {{city.countryCode}}</a> <img [src]="city.getFlagIconUrl()">  <b>{{city.weatherDescription}}</b>
+					<p>Temperature: <span>{{city.weatherTemperature}}</span> Pressure: <span>{{city.weatherPressure}}</span></p>
+					<p>See it on the <a [href]="city.getMapUrl()" target="_blank">map</a></p>
+				</td>
+			</tr>
+		</table>
 	</div>
 </div>

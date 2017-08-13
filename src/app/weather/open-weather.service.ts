@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 
-import { CityModel } from './city.model'
+import { CityWeather } from './city-weather'
 
 @Injectable()
 export class OpenWeatherService {
@@ -15,7 +15,7 @@ export class OpenWeatherService {
 	constructor(private http: Http) { 
 	}
 	
-	requestWeatherFor(cityName: string): Promise<Array<CityModel>> {
+	requestWeatherFor(cityName: string): Promise<Array<CityWeather>> {
 		
 		let url: string = "https://api.openweathermap.org/data/2.5/find";
 		let params: URLSearchParams = new URLSearchParams();
@@ -35,10 +35,16 @@ export class OpenWeatherService {
   	return Promise.reject(error.message || error);
 	}
 
-	private formatResponse(responseData: any): Array<CityModel> {
-		let cities: Array<CityModel> = [];
+	private formatResponse(responseData: any): Array<CityWeather> {
+		let cities: Array<CityWeather> = [];
 		for (let item of responseData.list) {
-			let city: CityModel = {
+
+			//Filter duplicates
+			if (cities.find(rhs => (item.name === rhs.name) && (item.sys.country === rhs.countryCode)))
+				continue;
+
+			//Add new city weather entry
+			let city: CityWeather = {
 				id: item.id,
 				name: item.name,
 				countryCode: item.sys.country,
@@ -47,7 +53,23 @@ export class OpenWeatherService {
 				weatherDescription: item.weather[0].description,
 				weatherIcon: item.weather[0].icon,
 				weatherTemperature: item.main.temp,
-				weatherPressure: item.main.pressure
+				weatherPressure: item.main.pressure,
+				
+				getFlagIconUrl(): string {
+					return `http://openweathermap.org/images/flags/${this.countryCode.toLowerCase()}.png`;
+				},
+
+				getWeatherIconUrl(): string {
+					return `http://openweathermap.org/img/w/${this.weatherIcon.toLowerCase()}.png`;
+				},
+
+				getCityUrl(): string {
+					return `https://openweathermap.org/city/${this.id}`;
+				},
+
+				getMapUrl(): string {
+					return `https://openweathermap.org/weathermap?zoom=12&lat=${this.latitude}&lon=${this.longitude}`;
+				}
 			};
 			cities.push(city);
 		}
