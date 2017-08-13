@@ -21,7 +21,7 @@ export class OpenWeatherService {
 		let params: URLSearchParams = new URLSearchParams();
 		params.set('q', cityName);
 		params.set('type', 'like');
-		params.set('units', 'metric');
+		//params.set('units', 'metric');
 		params.set('appid', this.apiKey);
 
 		return this.http.get(url, { search: params })

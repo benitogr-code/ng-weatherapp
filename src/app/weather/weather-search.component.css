@@ -10,6 +10,11 @@
 	border-radius: 5px;
 }
 
+.city-link {
+	color: orange;
+	font-weight: bold;
+}
+
 #searchInput {
 	width: 300px;
 }
