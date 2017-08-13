@@ -1,18 +1,25 @@
-<div>
-	<input #inputCity type="text" >
-	<button (click)="requestWeatherFor(inputCity.value)">Search</button>
-	<div>
-		<table>
-			<tr *ngFor="let city of searchResult">
-				<td>
-					<img [src]="city.getWeatherIconUrl()">
-				</td>
-				<td>
-					<a [href]="city.getCityUrl()" target="_blank">{{city.name}}, {{city.countryCode}}</a> <img [src]="city.getFlagIconUrl()">  <b>{{city.weatherDescription}}</b>
-					<p>Temperature: <span>{{city.weatherTemperature}}</span> Pressure: <span>{{city.weatherPressure}}</span></p>
-					<p>See it on the <a [href]="city.getMapUrl()" target="_blank">map</a></p>
-				</td>
-			</tr>
-		</table>
-	</div>
+<div class="jumbotron search-form">
+	<form class="form-inline text-center" #searchForm="ngForm">
+		<input id="searchInput" type="text" class="form-control" 
+			[(ngModel)]="searchInput" name="cityName" #cityName="ngModel" 
+			placeholder="Enter city name" title="Name must have at least 3 characters" minlength="3" required>
+		<button type="submit" class="btn" (click)="requestWeatherFor(cityName.value)" 
+			[disabled]="!canSubmitRequest(searchForm.form.valid)" [class.btn-success]="searchForm.form.valid"> Search </button>
+	</form>
+</div>
+<div class="container row">
+	<div class="col-sm-2"></div>
+	<table class="col-sm-8">
+		<tr *ngFor="let city of searchResult.cities">
+			<td>
+				<img [src]="city.getWeatherIconUrl()">
+			</td>
+			<td>
+				<a [href]="city.getCityUrl()" target="_blank">{{city.name}}, {{city.countryCode}}</a> <img [src]="city.getFlagIconUrl()">  <b>{{city.weatherDescription}}</b>
+				<p>Temperature: <span class="highlight">{{city.weatherTemperature}} ºC</span> Pressure: <span class="highlight">{{city.weatherPressure}}</span> hpa</p>
+				<p>See it on the <a [href]="city.getMapUrl()" target="_blank">map</a></p>
+			</td>
+		</tr>
+	</table>
+	<div class="col-sm-2"></div>
 </div>

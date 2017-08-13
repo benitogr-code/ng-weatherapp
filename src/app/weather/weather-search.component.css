@@ -1,0 +1,24 @@
+.search-form {
+	background-color: orange;
+}
+
+.highlight {
+	font-weight: bold;
+	background-color: grey;
+	color: white;
+	padding: 3px;
+	border-radius: 5px;
+}
+
+#searchInput {
+	width: 300px;
+}
+
+table > tbody > tr {
+	border-bottom: 1pt solid darkgrey;
+}
+
+table > tbody > tr > td {
+	padding-top: 10px;
+	margin-top: 5px;
+}
