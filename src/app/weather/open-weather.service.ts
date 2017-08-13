@@ -27,12 +27,11 @@ export class OpenWeatherService {
 		return this.http.get(url, { search: params })
 			.toPromise()
 			.then(responseMsg => this.formatResponse(responseMsg.json()))
-			.catch(this.handleError);
+			.catch(error => { this.handleError(error); return []});
 	}
 
-	private handleError(error: any): Promise<any> {
+	private handleError(error: any): void {
   	console.error('An error occurred', error);
-  	return Promise.reject(error.message || error);
 	}
 
 	private formatResponse(responseData: any): Array<CityWeather> {
