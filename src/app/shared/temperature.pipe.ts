@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
  * Usage:
  *   value | temperature:unit
  * Example:
- *   {{ 303.15 | temperature: cel }}
+ *   {{ 303.15 | temperature: 'celsius' }}
  *   formats to: 30 ºC
 */
 
@@ -15,12 +15,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TemperaturePipe implements PipeTransform {
 
 	transform(value: number, unit: string): string {
-		//console.log("Temperature Pipe: " + unit);
-		if (unit && (unit === "cel")) {
+
+		if (unit && (unit === "celsius")) {
 			let newValue = value - 273.15;
 			return `${newValue.toFixed(2)} ºC`;
 		}
-		else if (unit && (unit === "fah")) {
+		else if (unit && (unit === "fahrenheit")) {
 			const factor = 9.0/5.0;
 			let newValue =  (value * factor) - 459.67;
 			return `${value.toFixed(2)} ºF`;

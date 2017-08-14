@@ -1,3 +1,11 @@
+<!-- Header -->
+<div class="container row">
+	<div class="col-sm-2"></div>
+	<h3 class="col-sm-8">Search Weather by City</h3>
+	<div class="col-sm-2"></div>
+</div>
+
+<!-- Search From -->
 <div class="jumbotron search-form">
 	<form class="form-inline text-center" #searchForm="ngForm">
 		<input id="searchInput" type="text" class="form-control" 
@@ -7,6 +15,8 @@
 			[disabled]="!canSubmitRequest(searchForm.form.valid)" [class.btn-success]="searchForm.form.valid"> Search </button>
 	</form>
 </div>
+
+<!-- Results container -->
 <div class="container row">
 	<div class="col-sm-2"></div>
 	<table class="col-sm-8">
@@ -17,7 +27,7 @@
 			<td>
 				<a [href]="city.getCityUrl()" class="city-link" target="_blank">{{city.name}}, {{city.countryCode}}</a> <img [src]="city.getFlagIconUrl()">  <b>{{city.weatherDescription}}</b>
 				<p>
-					Temperature: <span class="highlight">{{city.weatherTemperature | temperature: 'cel'}}</span>
+					Temperature: <span class="highlight">{{city.weatherTemperature | temperature:'celsius'}}</span>
 					 Pressure: <span class="highlight">{{city.weatherPressure}} hpa</span>
 					</p>
 				<p>See it on the <a [href]="city.getMapUrl()" target="_blank">map</a></p>
