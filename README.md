@@ -12,12 +12,14 @@ This app showcases the usage of some of the most common features found in an Ang
 
 Additionally this project [branch](https://bitbucket.org/benitogr_code/angular-weatherapp/branch/deploy-1.0) demostrates AOT compilation and bundling for static deployment of the app.
 
-* About TypeScript: https://www.typescriptlang.org/docs/home.html
-* About Angular: https://angular.io/docs
+To learn more about Angular:
+
+* TypeScript: https://www.typescriptlang.org
+* Angular: https://angular.io
 
 Try it yourself
 ---------
 
-TODO: Add link to github pages
+Try the app at [http://bgr-ng-weatherapp.surge.sh](http://bgr-ng-weatherapp.surge.sh/home)
 
 ![picture](res/weather-app.png)
