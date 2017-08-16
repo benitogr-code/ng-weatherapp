@@ -20,6 +20,6 @@ To learn more about Angular:
 Try it yourself
 ---------
 
-Try the app at [http://bgr-ng-weatherapp.surge.sh](http://bgr-ng-weatherapp.surge.sh/home)
+Try the app at [http://bgr-ng-weatherapp.surge.sh](http://bgr-ng-weatherapp.surge.sh)
 
 ![picture](res/weather-app.png)
