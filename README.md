@@ -16,10 +16,6 @@ To learn more about Angular:
 
 * TypeScript: https://www.typescriptlang.org
 * Angular: https://angular.io
-
-Try it yourself
 ---------
-
-Try the app at [http://bgr-ng-weatherapp.surge.sh](http://bgr-ng-weatherapp.surge.sh)
 
 ![picture](res/weather-app.png)
